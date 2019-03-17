@@ -1,0 +1,15 @@
+service: demo-sls
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+
+functions:
+  api:
+    handler: src/api/index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY /{param+}'
